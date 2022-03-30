@@ -9,6 +9,7 @@ const surveys = [{ id: 1, title: '제목', body: '내용' }];
 */
 
 exports.write = (ctx) => {
+    console.log(ctx.request.body);
     const { title, body } = ctx.request.body;
     surveyId += 1;
     const survey = { id: surveyId, title, body };
