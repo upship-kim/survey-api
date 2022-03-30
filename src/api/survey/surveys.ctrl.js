@@ -50,7 +50,7 @@ exports.read = (ctx) => {
     DELETE /api/surveys/:id
  */
 
-exports.delete = (ctx) => {
+exports.remove = (ctx) => {
     const { id } = ctx.params;
     const index = surveys.findIndex((item) => item.id.toString() === id);
     if (index === -1) {
