@@ -25,16 +25,16 @@ exports.write = async (ctx) => {
 };
 
 /*
-    템플릿 조회
-    GET /api/admin
- */
+템플릿 조회
+GET /api/admin
+*/
 
 exports.list = async (ctx) => {
     try {
         const templates = await Template.find().exec();
         console.log(templates);
 
-        ctx.body = templates;
+        ctx.body = { data: templates };
     } catch (e) {
         ctx.throw(500, e);
     }

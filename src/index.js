@@ -1,5 +1,6 @@
 require('dotenv').config();
 const Koa = require('koa');
+const cors = require('@koa/cors');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 
@@ -12,6 +13,15 @@ const router = new Router();
 
 // eslint-disable-next-line no-undef
 const { PORT, MONGO_URI } = process.env;
+// CORS 옵션
+let corsOptions = {
+    origin: process.env.CLIENT_HOST,
+    credentials: true,
+};
+
+// CORS 허용
+app.proxy = true; // true 일때 proxy 헤더들을 신뢰함
+app.use(cors(corsOptions));
 
 mongoose
     .connect(MONGO_URI)
@@ -19,7 +29,6 @@ mongoose
         console.log('Connected to MongoDB');
     })
     .catch((e) => console.log(e));
-
 router.use('/api', api.routes());
 
 app.use(bodyParser());
