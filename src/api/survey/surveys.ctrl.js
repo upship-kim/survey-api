@@ -13,8 +13,3 @@ exports.write = (ctx) => {
         message: '문의가 성공적으로 이뤄졌습니다',
     };
 };
-
-/*
-    설문 목록 조회
-    GET /api/surveys
- */
