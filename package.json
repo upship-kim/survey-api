@@ -24,7 +24,7 @@
         "nodemon": "^2.0.15"
     },
     "scripts": {
-        "start": "npm install && nodemon --watch src/ src/index.js",
+        "start": "npm install && node index.js",
         "start:dev": "nodemon --watch src/ src/index.js"
     }
 }
