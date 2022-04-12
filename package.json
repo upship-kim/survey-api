@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
+    "engines": {
+        "node": "16.x",
+        "yarn": "1.x"
+    },
     "dependencies": {
         "@koa/cors": "^3.3.0",
         "bcrypt": "^5.0.1",
@@ -21,6 +25,8 @@
         "nodemon": "^2.0.15"
     },
     "scripts": {
-        "start": "npm install && nodemon --watch src/ src/index.js"
+        "start": "yarn install && node src",
+        "start:dev": "nodemon --watch src/ src/index.js",
+        "build": "webpack"
     }
 }
