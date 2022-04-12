@@ -10,7 +10,7 @@ const api = require('./api');
 
 const app = new Koa();
 const router = new Router();
-
+const jwtMiddleware = require('./lib/jwtMiddleware');
 // eslint-disable-next-line no-undef
 const { PORT, MONGO_URI } = process.env;
 // CORS 옵션
@@ -32,6 +32,7 @@ mongoose
 router.use('/api', api.routes());
 
 app.use(bodyParser());
+app.use(jwtMiddleware);
 
 app.use(router.routes()).use(router.allowedMethods());
 
