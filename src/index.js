@@ -12,9 +12,9 @@ const app = new Koa();
 const router = new Router();
 const jwtMiddleware = require('./lib/jwtMiddleware');
 // eslint-disable-next-line no-undef
-const { PORT, MONGO_URI } = process.env;
+// const { PORT, MONGO_URI } = process.env;
 
-const port = PORT || 4000;
+const port = process.env.PORT;
 // CORS 옵션
 let corsOptions = {
     origin: process.env.CLIENT_HOST,
@@ -26,7 +26,7 @@ app.proxy = true; // true 일때 proxy 헤더들을 신뢰함
 app.use(cors(corsOptions));
 
 mongoose
-    .connect(MONGO_URI)
+    .connect(process.env.MONGO_URI)
     .then(() => {
         console.log('Connected to MongoDB');
     })
