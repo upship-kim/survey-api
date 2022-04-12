@@ -25,6 +25,7 @@
     },
     "scripts": {
         "start": "npm install && node index.js",
-        "start:dev": "nodemon --watch src/ src/index.js"
+        "start:dev": "nodemon --watch src/ src/index.js",
+        "build": "ng build"
     }
 }
