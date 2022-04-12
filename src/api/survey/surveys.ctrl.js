@@ -6,11 +6,8 @@ const main = require('../../lib/sendMail');
     { title, body }
 */
 exports.write = (ctx) => {
-    // console.log(ctx.request.body);
-    // const { selectedInfo } = ctx.request.body;
-    // selectedInfo.map((item) => console.log(item));
     main(ctx.request.body);
-    // console.log(selectedInfo);
+
     ctx.body = {
         success: true,
         message: '문의가 성공적으로 이뤄졌습니다',
