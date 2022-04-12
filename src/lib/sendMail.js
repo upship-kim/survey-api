@@ -1,6 +1,21 @@
 const nodemailer = require('nodemailer');
 
 async function main(res) {
+    const { basicInfo, selectedInfo } = res;
+    const {
+        customName,
+        phone,
+        email,
+        address,
+        building,
+        date,
+        fee,
+        restRoomCount,
+        bedRoomCount,
+        salesArea,
+        actureArea,
+        callTime,
+    } = basicInfo;
     const transporter = nodemailer.createTransport({
         service: process.env.SERVICE_MAIL,
         port: process.env.SEND_MAIL_PORT,
@@ -10,19 +25,39 @@ async function main(res) {
             pass: process.env.SEND_EMAIL_PASSWORD,
         },
     });
+
     const emailOptions = {
         // 옵션값 설정
         from: process.env.SEND_EMAIL_ADDRESS,
         to: process.env.RECEIVE_EMAIL_ADDRESS,
         subject: '테스트 메일 입니다 ',
-        html:
-            '<h1 >Binding에서 새로운 비밀번호를 알려드립니다.</h1> <h2> 비밀번호 : ' +
-            '1234' +
-            '</h2>' +
-            '<h3 style="color: crimson;">임시 비밀번호로 로그인 하신 후, 반드시 비밀번호를 수정해 주세요.</h3>' +
-            '<img src="https://firebasestorage.googleapis.com/v0/b/mangoplate-a1a46.appspot.com/o/mailImg.png?alt=media&token=75e07db2-5aa6-4cb2-809d-776ba037fdec">',
+        html: `<div style={{ listStyle: "none", lineHeight: "30px", padding: "1rem" }}>
+            <h2>고객정보</h2>
+            <hr></hr>
+            <li>고객명: ${customName}</li>
+            <li>연락처: ${phone}</li>
+            <li>이메일: ${email}</li>
+            <li>공사현장주소: ${address}</li>
+            <li>건물구분: ${building}</li>
+            <li>공사예정일: ${date}</li>
+            <li>예산: ${fee}</li>
+            <li>침실 수: ${bedRoomCount}</li>
+            <li>화장실 수: ${restRoomCount}</li>
+            <li>분양면적: ${salesArea} 평형</li>
+            <li>전용면적: ${actureArea} 평형</li>
+            <li>연락가능시간: ${callTime}</li>
+            <br></br>
+            <h2>선택 정보</h2>
+            <hr></hr>
+            <div style={{ background: "#eeeeee" }}>
+                <h4>설문 항목: 주방 선택일까?</h4>
+                <li>주방 선택사항 : value</li>
+                <li>냉장고 유형 선택: value</li>
+            </div>
+        </div>`,
     };
-    transporter.sendMail(emailOptions, res);
+
+    // transporter.sendMail(emailOptions, res);
     //전송
 }
 
