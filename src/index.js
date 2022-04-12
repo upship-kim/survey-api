@@ -13,6 +13,8 @@ const router = new Router();
 const jwtMiddleware = require('./lib/jwtMiddleware');
 // eslint-disable-next-line no-undef
 const { PORT, MONGO_URI } = process.env;
+
+const port = PORT || 4000;
 // CORS 옵션
 let corsOptions = {
     origin: process.env.CLIENT_HOST,
@@ -36,6 +38,6 @@ app.use(jwtMiddleware);
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(PORT, () => {
-    console.log(`listening to port ${PORT}`);
+app.listen(port, () => {
+    console.log(`listening to port ${port}`);
 });
