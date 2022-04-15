@@ -16,13 +16,13 @@ const { PORT, MONGO_URI } = process.env;
 
 // CORS 옵션
 let corsOptions = {
-    origin: true,
-    credentials: true
+    origin: process.env.CLIENT_HOST,
+    credentials: true,
 };
 
 // CORS 허용
-app.proxy = false; // true 일때 proxy 헤더들을 신뢰함
-app.use(cors(corsOptions));
+app.proxy = true; // true 일때 proxy 헤더들을 신뢰함
+app.use(cors());
 
 mongoose
     .connect(MONGO_URI)
