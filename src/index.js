@@ -19,7 +19,7 @@ let corsOptions = {
     origin: process.env.CLIENT_HOST,
     credentials: true,
     'Access-Control-Allow-Origin':"*",
-    AccessControlAllowOrigin':"*"
+    AccessControlAllowOrigin:"*"
 };
 
 // CORS 허용
