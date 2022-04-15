@@ -62,6 +62,8 @@ exports.login = async (ctx) => {
         ctx.cookies.set('accessToken', token, {
             maxAge: 1000 * 60 * 60 * 24 * 7,
             httpOnly: true,
+            sameSite: 'none',
+            secure: true,
         });
     } catch (e) {
         ctx.throw(500, e);
