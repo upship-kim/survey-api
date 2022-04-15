@@ -16,7 +16,7 @@ const { PORT, MONGO_URI } = process.env;
 
 // CORS 옵션
 let corsOptions = {
-    origin: 'https://upship-survey-app.herokuapp.com/',
+    origin: 'https://upship-survey-app.herokuapp.com',
     credentials: true,
 };
 
