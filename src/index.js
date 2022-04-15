@@ -16,8 +16,10 @@ const { PORT, MONGO_URI } = process.env;
 
 // CORS 옵션
 let corsOptions = {
-    origin: '*',
+    origin: process.env.CLIENT_HOST,
     credentials: true,
+    'Access-Control-Allow-Origin':"*",
+    AccessControlAllowOrigin':"*"
 };
 
 // CORS 허용
