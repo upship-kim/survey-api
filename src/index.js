@@ -16,7 +16,7 @@ const { PORT, MONGO_URI } = process.env;
 
 // CORS 옵션
 let corsOptions = {
-    origin: process.env.CLIENT_HOST,
+    origin: '*',
     credentials: true,
 };
 
